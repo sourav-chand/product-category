@@ -3,8 +3,7 @@
 		"_postman_id": "daacc75c-6b1a-4d94-aca3-3d06f1033033",
 		"name": "Machine-test-Sourav-Chand",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "40308292",
-		"_collection_link": "https://machine-test-6628.postman.co/workspace/machine-test-Workspace~7bd1f77b-92ea-4951-8172-f96b58d0f183/collection/40308292-daacc75c-6b1a-4d94-aca3-3d06f1033033?action=share&source=collection_link&creator=40308292"
+		"_exporter_id": "40308292"
 	},
 	"item": [
 		{
@@ -17,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"categoryName\": \"Electronics\"\r\n}",
+							"raw": " { \"categoryName\": \"Toys\" }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -37,10 +36,120 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "crearte a catagory response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoryName\": \"Electronics\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "194"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c2-HjyLHJSLSs2xdTZbPonR0pTUG24\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:04:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category added successfully\",\n    \"category\": {\n        \"categoryName\": \"Electronics\",\n        \"_id\": \"67e6660a45949dfed7bb90ac\",\n        \"creationDate\": \"2025-03-28T09:04:10.714Z\",\n        \"creationTime\": \"2:34:10 PM\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "getting the categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID</th>\r",
+									"        <th>Category Name</th>\r",
+									"        <th>Creation Date</th>\r",
+									"        <th>Creation Time</th>\r",
+									"        <th>Version</th>\r",
+									"    </tr>\r",
+									"    \r",
+									"    {{#each response}}\r",
+									"        <tr>\r",
+									"            <td>{{_id}}</td>\r",
+									"            <td>{{categoryName}}</td>\r",
+									"            <td>{{creationDate}}</td>\r",
+									"            <td>{{creationTime}}</td>\r",
+									"            <td>{{__v}}</td>\r",
+									"        </tr>\r",
+									"    {{/each}}\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {response: pm.response.json()}\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -57,7 +166,62 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "getting the categories res",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"categories"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "699"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2bb-Xs07HFdSXN8XuWZv0xay2MVOKvg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:07:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"67e6660a45949dfed7bb90ac\",\n        \"categoryName\": \"Electronics\",\n        \"creationDate\": \"2025-03-28T09:04:10.714Z\",\n        \"creationTime\": \"2:34:10 PM\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"67e6666645949dfed7bb90ae\",\n        \"categoryName\": \"Clothing\",\n        \"creationDate\": \"2025-03-28T09:05:42.949Z\",\n        \"creationTime\": \"2:35:42 PM\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"67e6668445949dfed7bb90b0\",\n        \"categoryName\": \"Books\",\n        \"creationDate\": \"2025-03-28T09:06:12.138Z\",\n        \"creationTime\": \"2:36:12 PM\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"67e6668f45949dfed7bb90b2\",\n        \"categoryName\": \"Home Appliances\",\n        \"creationDate\": \"2025-03-28T09:06:23.258Z\",\n        \"creationTime\": \"2:36:23 PM\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"67e6669945949dfed7bb90b4\",\n        \"categoryName\": \"Toys\",\n        \"creationDate\": \"2025-03-28T09:06:33.295Z\",\n        \"creationTime\": \"2:36:33 PM\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "updated the category",
@@ -74,7 +238,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/categories/67e53a96f6d86e91e429c4d4",
+							"raw": "http://localhost:5000/api/categories/67e6660a45949dfed7bb90ac",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -83,11 +247,76 @@
 							"path": [
 								"api",
 								"categories",
-								"67e53a96f6d86e91e429c4d4"
+								"67e6660a45949dfed7bb90ac"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "updated the category res",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"categoryName\": \"Updated Electronics\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/categories/67e6660a45949dfed7bb90ac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"categories",
+										"67e6660a45949dfed7bb90ac"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "198"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c6-fZk5ldvBakLuSJ/rzRUSmhtSaHo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:09:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category updated\",\n    \"updatedCategory\": {\n        \"_id\": \"67e6660a45949dfed7bb90ac\",\n        \"categoryName\": \"Updated Electronics\",\n        \"creationDate\": \"2025-03-28T09:04:10.714Z\",\n        \"creationTime\": \"2:34:10 PM\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "delete category",
@@ -95,7 +324,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/categories/67e53a96f6d86e91e429c4d4",
+							"raw": "http://localhost:5000/api/categories/67e6660a45949dfed7bb90ac",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -104,11 +333,67 @@
 							"path": [
 								"api",
 								"categories",
-								"67e53a96f6d86e91e429c4d4"
+								"67e6660a45949dfed7bb90ac"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "delete category res",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/categories/67e6660a45949dfed7bb90ac",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"categories",
+										"67e6660a45949dfed7bb90ac"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e-oCBh6KwgTqOw4kBmQwxTMOxy7mE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:10:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Category deleted\"\n}"
+						}
+					]
 				}
 			]
 		},
@@ -142,7 +427,71 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Add Product res",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"category\": \"67e53ffaf1547b92607dc40b\",\r\n  \"name\": \"iPhone 14\",\r\n  \"description\": \"Apple smartphone with A16 chip\",\r\n  \"price\": 999,\r\n  \"image\": \"https://example.com/iphone14.jpg\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "396"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18c-v5Bhn5o1IRlU25tKgPkBMZWLCUQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:10:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product added successfully\",\n    \"product\": {\n        \"category\": \"67e53ffaf1547b92607dc40b\",\n        \"name\": \"iPhone 14\",\n        \"description\": \"Apple smartphone with A16 chip\",\n        \"price\": 999,\n        \"image\": \"https://example.com/iphone14.jpg\",\n        \"_id\": \"67e6679845949dfed7bb90b9\",\n        \"insertDate\": \"2025-03-28T09:10:48.430Z\",\n        \"insertTime\": \"2:40:48 PM\",\n        \"createdAt\": \"2025-03-28T09:10:48.433Z\",\n        \"updatedAt\": \"2025-03-28T09:10:48.433Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get All Products with Category Details",
@@ -162,7 +511,62 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get All Products with Category Details res",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "960"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c0-glnRZshO4MQAeJqMXjjeHactO5Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:12:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"67e667d845949dfed7bb90bb\",\n        \"category\": \"67e6666645949dfed7bb90ae\",\n        \"name\": \"T-Shirt\",\n        \"description\": \"Cotton fabric, high quality\",\n        \"price\": 20,\n        \"image\": \"tshirt_image_url\",\n        \"insertDate\": \"2025-03-28T09:11:52.720Z\",\n        \"insertTime\": \"2:41:52 PM\",\n        \"createdAt\": \"2025-03-28T09:11:52.722Z\",\n        \"updatedAt\": \"2025-03-28T09:11:52.722Z\",\n        \"__v\": 0,\n        \"categoryDetails\": {\n            \"_id\": \"67e6666645949dfed7bb90ae\",\n            \"categoryName\": \"Clothing\",\n            \"creationDate\": \"2025-03-28T09:05:42.949Z\",\n            \"creationTime\": \"2:35:42 PM\",\n            \"__v\": 0\n        }\n    },\n    {\n        \"_id\": \"67e667fe45949dfed7bb90bd\",\n        \"category\": \"67e6668445949dfed7bb90b0\",\n        \"name\": \"T-Shirt\",\n        \"description\": \"Cotton fabric, high quality\",\n        \"price\": 20,\n        \"image\": \"tshirt_image_url\",\n        \"insertDate\": \"2025-03-28T09:12:30.527Z\",\n        \"insertTime\": \"2:42:30 PM\",\n        \"createdAt\": \"2025-03-28T09:12:30.530Z\",\n        \"updatedAt\": \"2025-03-28T09:12:30.530Z\",\n        \"__v\": 0,\n        \"categoryDetails\": {\n            \"_id\": \"67e6668445949dfed7bb90b0\",\n            \"categoryName\": \"Books\",\n            \"creationDate\": \"2025-03-28T09:06:12.138Z\",\n            \"creationTime\": \"2:36:12 PM\",\n            \"__v\": 0\n        }\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Get Single Product by ID",
@@ -170,7 +574,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/products/67e54210766adda102c949bb",
+							"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -179,11 +583,67 @@
 							"path": [
 								"api",
 								"products",
-								"67e54210766adda102c949bb"
+								"67e6679845949dfed7bb90b9"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Single Product by ID res",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products",
+										"67e6679845949dfed7bb90b9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "323"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"143-2j70CXEMcGLohuPtHNnLGco1CiE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:13:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"67e6679845949dfed7bb90b9\",\n    \"category\": null,\n    \"name\": \"iPhone 14\",\n    \"description\": \"Apple smartphone with A16 chip\",\n    \"price\": 999,\n    \"image\": \"https://example.com/iphone14.jpg\",\n    \"insertDate\": \"2025-03-28T09:10:48.430Z\",\n    \"insertTime\": \"2:40:48 PM\",\n    \"createdAt\": \"2025-03-28T09:10:48.433Z\",\n    \"updatedAt\": \"2025-03-28T09:10:48.433Z\",\n    \"__v\": 0\n}"
+						}
+					]
 				},
 				{
 					"name": "Q3. Get Product Count by Category",
@@ -205,7 +665,64 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Q3. Get Product Count by Category res",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/products/count/by-category",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products",
+										"count",
+										"by-category"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-UETKKtgQOYo+U5tqbyLOf8L8d34\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:13:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"category\": \"Clothing\",\n        \"productCount\": 1\n    },\n    {\n        \"category\": \"Books\",\n        \"productCount\": 1\n    }\n]"
+						}
+					]
 				},
 				{
 					"name": "Edit Product",
@@ -222,7 +739,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/products/67e5665e88a91544c34cb966",
+							"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -231,11 +748,76 @@
 							"path": [
 								"api",
 								"products",
-								"67e5665e88a91544c34cb966"
+								"67e6679845949dfed7bb90b9"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Edit Product res",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Updated Product Name\",\r\n    \"description\": \"Updated Description\",\r\n    \"price\": 1099\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products",
+										"67e6679845949dfed7bb90b9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "399"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18f-lc1F9fLkxnM2gV/tO8l01rdTvX8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:14:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product updated successfully\",\n    \"product\": {\n        \"_id\": \"67e6679845949dfed7bb90b9\",\n        \"category\": \"67e53ffaf1547b92607dc40b\",\n        \"name\": \"Updated Product Name\",\n        \"description\": \"Updated Description\",\n        \"price\": 1099,\n        \"image\": \"https://example.com/iphone14.jpg\",\n        \"insertDate\": \"2025-03-28T09:10:48.430Z\",\n        \"insertTime\": \"2:40:48 PM\",\n        \"createdAt\": \"2025-03-28T09:10:48.433Z\",\n        \"updatedAt\": \"2025-03-28T09:14:46.155Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Delete Product",
@@ -243,7 +825,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/products/67e5665e88a91544c34cb966",
+							"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -252,11 +834,67 @@
 							"path": [
 								"api",
 								"products",
-								"67e5665e88a91544c34cb966"
+								"67e6679845949dfed7bb90b9"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Delete Product res",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/api/products/67e6679845949dfed7bb90b9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"products",
+										"67e6679845949dfed7bb90b9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-a+2htZNpkCDaj0ausIFBiheaYZ4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 28 Mar 2025 09:15:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product deleted successfully\"\n}"
+						}
+					]
 				}
 			]
 		}
